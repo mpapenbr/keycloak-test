@@ -24,4 +24,38 @@ We can manually override the values here and make the user ready to use: remove 
 
 After these steps we have at least one user setup in Keycloak.
 
+# Implementation
+This variant uses a session and public-client=true variant. A stateless version can be found under a different branch. 
+
+# Notes
+## Java 14
+As of now (2020-10-17), do not use Java 14. This results in a 
+```
+Caused by: java.lang.ClassNotFoundException: java.security.acl.Group
+```
+exception.
+Using Java 11 is fine.
+
+See:
+- https://stackoverflow.com/questions/61932188/keycloak-server-caused-by-java-lang-classnotfoundexception-java-security-acl-g
+- https://issues.redhat.com/browse/KEYCLOAK-13690
+
+## Insomnia
+
+Couldn't get this done via Insomnia. Keycloak reports this:
+```
+19:14:15,290 WARN  [org.keycloak.events] (default task-79) type=IDENTITY_PROVIDER_LOGIN_ERROR, realmId=demo, clientId=null, userId=null, ipAddress=172.17.0.1, error=invalid_code, identity_provider=github
+```
+## Dev container
+Remember: `localhost` may have different meanings!
+
+The better solution is to work with `host.docker.internal` when dev containers are involved and you don't have setup ALL components in your dev environment. 
+
+Example: 
+From this dev container we contact the keycloak server via `host.docker.internal`. Keycloak uses this name as redirect URI for Github. In prior tests - when evaluating the Keycloak GUI - we used a `localhost` based callback URI in the Github OAuth Application settings. This caused problems with the Github authorization. Solution was to setup the callback in Github as http://host.docker.internal.... 
+
+But....then there is Google. `host.docker.internal` is not considered a valid top level domain and cannot be used there. So be it. Currently no idea how to solve it. 
+
+
+
 

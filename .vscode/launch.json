@@ -1,0 +1,16 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-ServerApplication<demo>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal",
+            // "console": "internalConsole",
+            "mainClass": "de.mp.demo.keycloak.demo.DemoApplication",
+            "projectName": "demo",
+            "args": "",
+            "vmArgs": "-Dspring.profiles.active=default,secrets"
+        }
+    ]
+}

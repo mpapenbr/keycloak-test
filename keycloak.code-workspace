@@ -8,5 +8,7 @@
 			"path": "demo"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"java.configuration.updateBuildConfiguration": "automatic"
+	}
 }
