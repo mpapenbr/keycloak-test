@@ -25,7 +25,8 @@ We can manually override the values here and make the user ready to use: remove 
 After these steps we have at least one user setup in Keycloak.
 
 # Implementation
-This variant uses a session and public-client=true variant. A stateless version can be found under a different branch. 
+This variant tries to do a stateless approach. Unfortunately it doesn't work (yet?). 
+Problem is: we are asked for authentication but after that we are redirected to http://localhost:8080/ which is kind of strange. 
 
 # Notes
 ## Java 14
